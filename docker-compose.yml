@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  ollama-server:
+    build: .
+    container_name: ollama-container
+    ports:
+      - "5000:5000" # Make sure to match the exposed port in the Dockerfile
+    environment:
+      - FLASK_APP=app.py  # Adjust this if needed
+    networks:
+      - ollama-network
+
+networks:
+  ollama-network:
+    driver: bridge
